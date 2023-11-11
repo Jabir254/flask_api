@@ -1,6 +1,6 @@
 """Contains all the routes"""
 from flask import Flask, jsonify
-from config import Config
+from ..config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
