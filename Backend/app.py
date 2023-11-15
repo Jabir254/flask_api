@@ -1,3 +1,5 @@
+from routes import routes
+from model.models import Role, Employee, User, Attendance, Leave, Position
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -9,8 +11,11 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db, render_as_batch=True)
 
 
-from model import models
-from routes import routes
+@app.shell_context_processor
+def make_shell_context():
+    return {"db": db, "Role": Role, Employee: "Employee", User: "User",
+            Attendance: "Attendance", Leave: "Leave", Position: "Position"}
+
 
 if __name__ == "__main__":
     app.run(debug=True)
