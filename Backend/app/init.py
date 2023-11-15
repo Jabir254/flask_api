@@ -9,7 +9,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db, render_as_batch=True)
 
-from routes import route
+from app.routes import route
 from model.models import Role, Employee, User, Attendance, Leave, Position
 
 @app.shell_context_processor

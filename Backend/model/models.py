@@ -1,9 +1,10 @@
 from app import db
+from dataclasses import dataclass
 
-
+@dataclass
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), unique=True, nullable=False)
+    name = db.Column(db.String(50), unique=True, nullable=False)
 
 
 class User(db.Model):
