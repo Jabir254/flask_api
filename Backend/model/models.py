@@ -11,8 +11,6 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    # e.g., 'employee', 'manager', 'admin'
-    role = db.Column(db.String(20), nullable=False)
 
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
     role = db.relationship('Role', backref=db.backref('users', lazy=True))
