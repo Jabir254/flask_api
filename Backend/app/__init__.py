@@ -3,6 +3,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
+from flask_login import LoginManager
+
+login_manager = LoginManager
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

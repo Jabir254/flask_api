@@ -16,6 +16,8 @@ class User(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
     role = db.relationship('Role', backref=db.backref('users', lazy=True))
 
+    
+
 
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
