@@ -5,11 +5,12 @@ from config import SECRET_KEY
 
 app.secret_key = SECRET_KEY
 
+
 class Route():
     @app.route("/")
     def index():
-        return"hello world"
-    
-    @app.route("/user")
+        return "hello world"
+
+    @app.route("/login", methods=['GET', 'POST'])
     def user():
         pass

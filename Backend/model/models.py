@@ -1,13 +1,15 @@
 from app import db
 from dataclasses import dataclass
+from flask_login import UserMixin
+from app import login_manager
 
 @dataclass
-class Role(db.Model):
+class Role(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
 
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
@@ -16,7 +18,9 @@ class User(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
     role = db.relationship('Role', backref=db.backref('users', lazy=True))
 
-    
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
 
 
 class Employee(db.Model):
