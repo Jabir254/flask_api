@@ -15,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db, render_as_batch=True)
+login_manager.init_app(app)
 
 from model.models import Role, Employee, User, Attendance, Leave, Position
 from app.routes import Route
@@ -26,4 +27,4 @@ def make_shell_context():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
