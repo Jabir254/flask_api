@@ -32,6 +32,10 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <p>
+            {{ form.role.label}}
+            {{ form.role(soze= 32)}}
+        </p>
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
