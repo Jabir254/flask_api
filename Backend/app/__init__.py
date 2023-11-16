@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 import os
 from flask_login import LoginManager
 
-login_manager = LoginManager
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db, render_as_batch=True)
-login_manager.init_app(app)
+login_manager = LoginManager(app)
 
 from model.models import Role, Employee, User, Attendance, Leave, Position
 from app.routes import Route
