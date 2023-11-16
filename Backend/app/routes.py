@@ -6,3 +6,7 @@ class Route():
     @app.route("/")
     def index():
         return"hello world"
+    
+    @app.route("/user")
+    def user():
+        pass
